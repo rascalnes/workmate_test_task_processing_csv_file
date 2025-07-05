@@ -1,4 +1,11 @@
+import csv
+
 import pytest
+
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from main import load_csv, apply_filter, aggregate_data
 
 
