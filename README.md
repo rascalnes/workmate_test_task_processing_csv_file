@@ -60,3 +60,8 @@ python main.py --file products.csv --where "rating>4.8"
 ```bash
 python main.py --file products.csv --where "rating<4.6"
 ```
+
+### tests
+```bash
+pytest --cov=main --cov-report=term-missing
+```
