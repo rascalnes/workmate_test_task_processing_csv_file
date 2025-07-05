@@ -5,10 +5,6 @@ from tabulate import tabulate
 
 
 def parse_filter_condition(condition: str) -> tuple:
-    """
-    Parses a filter condition string into column, operator, and value.
-    Example: "price>500" -> ("price", ">", "500")
-    """
     for op in [">", "<", "="]:
         if op in condition:
             column, value = condition.split(op)
@@ -17,25 +13,19 @@ def parse_filter_condition(condition: str) -> tuple:
 
 
 def apply_filter(data: List[Dict], condition: str) -> List[Dict]:
-    """
-    Applies a filter condition to the data.
-    """
     column, op, value = parse_filter_condition(condition)
 
     def compare(row):
         row_value = row[column]
-        # Initialize value_converted with the original value
         value_converted = value
 
-        # Convert to float if the column is numeric
-        if column in {"price", "rating"}:  # Define numeric columns explicitly
+        if column in {"price", "rating"}:
             try:
                 row_value = float(row_value)
                 value_converted = float(value_converted)
             except ValueError:
                 raise ValueError(f"Invalid numeric value in filter: {value}")
 
-        # Perform comparison based on the operator
         if op == ">":
             return row_value > value_converted
         elif op == "<":
@@ -49,9 +39,6 @@ def apply_filter(data: List[Dict], condition: str) -> List[Dict]:
 
 
 def aggregate_data(data: List[Dict], column: str, agg_type: str) -> float:
-    """
-    Performs aggregation on a numeric column.
-    """
     values = [float(row[column]) for row in data]
     if agg_type == "avg":
         return sum(values) / len(values)
@@ -64,16 +51,11 @@ def aggregate_data(data: List[Dict], column: str, agg_type: str) -> float:
 
 
 def load_csv(file_path: str) -> List[Dict]:
-    """
-    Loads data from a CSV file into a list of dictionaries.
-    Converts numeric columns to floats.
-    """
     with open(file_path, mode="r", encoding="utf-8") as file:
         reader = csv.DictReader(file)
         data = list(reader)
 
-    # Detect numeric columns and convert values to float
-    numeric_columns = {"price", "rating"}  # Define numeric columns explicitly
+    numeric_columns = {"price", "rating"}
     for row in data:
         for col in numeric_columns:
             if col in row:
@@ -96,20 +78,16 @@ def main():
 
     args = parser.parse_args()
 
-    # Load data from CSV
     data = load_csv(args.file)
 
-    # Apply filter if specified
     if args.where:
         data = apply_filter(data, args.where)
 
-    # Perform aggregation if specified
     if args.aggregate:
         column, agg_type = args.aggregate.split("=")
         result = aggregate_data(data, column, agg_type)
         print(tabulate([[result]], headers=[agg_type]))
     else:
-        # Display filtered data as a table
         print(tabulate(data, headers="keys", tablefmt="grid"))
 
 
