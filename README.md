@@ -24,17 +24,17 @@ python main.py --file products.csv --where "brand=apple"
 python main.py --file products.csv --aggregate "rating=avg"
 ```
 
-### raiting xiaomi min
+### rating xiaomi min
 ```bash
 python main.py --file products.csv --where "brand=xiaomi" --aggregate "rating=min"
 ```
 
-### raiting xiaomi max
+### rating xiaomi max
 ```bash
 python main.py --file products.csv --where "brand=xiaomi" --aggregate "rating=max"
 ```
 
-### raiting apple avg
+### rating apple avg
 ```bash
 python main.py --file products.csv --where "brand=apple" --aggregate "rating=avg"
 ```
