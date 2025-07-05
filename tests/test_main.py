@@ -12,9 +12,16 @@ from main import load_csv, apply_filter, aggregate_data
 @pytest.fixture
 def sample_data():
     return [
-        {"name": "iphone 15 pro", "brand": "apple", "price": 999, "rating": 4.9},
-        {"name": "galaxy s23 ultra", "brand": "samsung", "price": 1199, "rating": 4.8},
-        {"name": "redmi note 12", "brand": "xiaomi", "price": 199, "rating": 4.6},
+        {"name": "iphone 15 pro", "brand": "apple", "price": 999.0, "rating": 4.9},
+        {"name": "galaxy s23 ultra", "brand": "samsung", "price": 1199.0, "rating": 4.8},
+        {"name": "redmi note 12", "brand": "xiaomi", "price": 199.0, "rating": 4.6},
+        # {"name": "iphone 15 pro", "brand": "apple", "price": 999.0, "rating": 4.9},
+        # {"name": "galaxy a54", "brand": "samsung", "price": 349.0, "rating": 4.2},
+        # {"name": "poco x5 pro", "brand": "xiaomi", "price": 299.0, "rating": 4.4},
+        # {"name": "iphone se", "brand": "apple", "price": 429.0, "rating": 4.1},
+        # {"name": "galaxy z flip 5", "brand": "samsung", "price": 999.0, "rating": 4.6},
+        # {"name": "redmi 10c", "brand": "xiaomi", "price": 149.0, "rating": 4.1},
+        # {"name": "iphone 13 mini", "brand": "apple", "price": 599.0, "rating": 4.5},
     ]
 
 
