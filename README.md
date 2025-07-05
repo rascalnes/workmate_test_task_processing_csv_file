@@ -9,3 +9,13 @@ A Python script to process CSV files with filtering and aggregation capabilities
 ### Basic Usage
 ```bash
 python main.py --file products.csv
+```
+
+### Basic Usage
+```bash
+python main.py --file products.csv --where "brand=xiaomi"
+```
+### Basic Usage
+```bash
+python main.py --file products.csv --where "brand=apple"
+```
