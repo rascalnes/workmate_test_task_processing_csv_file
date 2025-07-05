@@ -33,3 +33,15 @@ python main.py --file products.csv --where "brand=xiaomi" --aggregate "rating=mi
 ```bash
 python main.py --file products.csv --where "brand=xiaomi" --aggregate "rating=max"
 ```
+
+### raiting apple avg
+```bash
+python main.py --file products.csv --where "brand=apple" --aggregate "rating=avg"
+```
+
+
+
+
+
+
+
