@@ -15,10 +15,12 @@ python main.py --file products.csv
 ```bash
 python main.py --file products.csv --where "brand=xiaomi"
 ```
+
 ### apple products
 ```bash
 python main.py --file products.csv --where "brand=apple"
 ```
+
 ### raiting avg
 ```bash
 python main.py --file products.csv --aggregate "rating=avg"
@@ -39,9 +41,22 @@ python main.py --file products.csv --where "brand=xiaomi" --aggregate "rating=ma
 python main.py --file products.csv --where "brand=apple" --aggregate "rating=avg"
 ```
 
+### price < 500
+```bash
+python main.py --file products.csv --where "price<500"
+```
 
+### price > 500
+```bash
+python main.py --file products.csv --where "price>500"
+```
 
+### rating > 4.8
+```bash
+python main.py --file products.csv --where "rating>4.8"
+```
 
-
-
-
+### rating < 4.6
+```bash
+python main.py --file products.csv --where "rating<4.6"
+```
