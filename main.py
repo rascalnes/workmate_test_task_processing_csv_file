@@ -24,13 +24,18 @@ def apply_filter(data: List[Dict], condition: str) -> List[Dict]:
 
     def compare(row):
         row_value = row[column]
-        # Convert to float if the value is numeric
-        try:
-            row_value = float(row_value)
-            value_converted = float(value)
-        except ValueError:
-            pass  # Keep as string for text comparison
+        # Initialize value_converted with the original value
+        value_converted = value
 
+        # Convert to float if the column is numeric
+        if column in {"price", "rating"}:  # Define numeric columns explicitly
+            try:
+                row_value = float(row_value)
+                value_converted = float(value_converted)
+            except ValueError:
+                raise ValueError(f"Invalid numeric value in filter: {value}")
+
+        # Perform comparison based on the operator
         if op == ">":
             return row_value > value_converted
         elif op == "<":
